@@ -1,0 +1,190 @@
+.layout-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: $background-body;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: grid;
+  row-gap: 10px;
+  grid-template-columns: minmax(150px, max-content) 1fr 1fr 1fr 1fr;
+  grid-template-rows: minmax(50px, 6vh) minmax(auto, 88vh) minmax(25px, 6vh);
+  grid-template-areas:
+    'header  header  header  header header'
+    'menu   main    main    main    main'
+    'footer footer  footer  footer  footer';
+}
+
+.header {
+  grid-area: header;
+  box-sizing: border-box;
+  background-color: $background-header;
+
+  &__wrapper {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__clock {
+    margin-left: 30px;
+    color: $menu-text;
+    @include font(20px, 24px, 400);
+  }
+
+  &__userBtn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: inherit;
+    border: none;
+    position: relative;
+  }
+  &__user:hover &__menu {
+    visibility: visible;
+    transform: translateX(0px);
+  }
+
+  &__userLogo {
+    background-color: gray;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  &__userLogo img {
+    width: 46px;
+    height: 46px;
+    object-fit: cover;
+  }
+
+  &__userName {
+    margin-right: 20px;
+    color: $menu-text;
+    @include font(16px, 19px, 300);
+  }
+
+  &__menu {
+    width: 200px;
+    z-index: 10;
+    padding: 15px 0;
+    box-sizing: border-box;
+    border-radius: 8px;
+    position: absolute;
+    right: 10px;
+    background-color: $background-header;
+    visibility: hidden;
+    //transition: 0.5s;
+    //transform: translateY(-100px);
+  }
+
+  &__link {
+    text-align: left;
+    padding-left: 30px;
+    background-color: inherit;
+    border: none;
+    width: 100%;
+    height: 32px;
+    color: $menu-text;
+    @include font(16px, 19px, 300);
+  }
+  &__link:hover {
+    background-color: $menu-hover;
+  }
+
+  &__btn-burger {
+    width: 32px;
+    height: 32px;
+    margin: auto 20px;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: inherit;
+    border: none;
+    display: none;
+  }
+}
+
+.main {
+  max-height: calc(89vh);
+  grid-area: main;
+  display: flex;
+  max-width: 100%;
+  transform: translateX(-10px);
+  background-color: white;
+  border-radius: 8px;
+  //padding: 20px;
+  //padding-left: 30px;
+}
+
+.menu {
+  grid-area: menu;
+  box-sizing: border-box;
+  padding: 30px 0;
+  height: 100%;
+  background-color: $menu-background;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  z-index: 10;
+}
+
+.footer {
+  grid-area: footer;
+  background-color: $background-footer;
+
+  &__wrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+  }
+
+  &__copy {
+    color: $menu-text;
+    @include font(16px, 19px, 300);
+  }
+}
+
+.menu-main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  &__btn {
+    width: 100%;
+    height: 34px;
+    padding: 0 30px;
+    background-color: inherit;
+    border: none;
+    text-align: left;
+    color: $menu-text;
+    @include font(16px, 19px, 300);
+    white-space: nowrap;
+  }
+  &__btn:hover {
+    background-color: $menu-hover;
+  }
+}
+
+@media (max-width: $max-tablet-width) {
+  .layout-container {
+    grid-template-areas:
+      'header  header  header  header header'
+      'main   main    main    main    main'
+      'footer footer  footer  footer  footer';
+  }
+
+  .main {
+    transform: translateX(0px);
+    margin: 0 10px;
+  }
+
+  .menu {
+    display: none;
+  }
+
+  .header__btn-burger {
+    display: block;
+  }
+}

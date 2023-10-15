@@ -1,0 +1,305 @@
+.dashBoardAdmin {
+  max-height: 90vh;
+  width: 100%;
+  overflow: auto;
+  box-sizing: border-box;
+}
+
+.usersList {
+  margin-top: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  display: grid;
+  grid-auto-rows: minmax(32px, max-content);
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  overflow: hidden;
+
+  &__row-title {
+    display: grid;
+    grid-template-columns: 50px 1fr 1fr 1fr 1fr 100px;
+    background-color: lightgray;
+  }
+
+  &__row {
+    margin-bottom: -1px;
+    text-decoration: none;
+    background-color: inherit;
+    border-bottom: 1px solid lightgray;
+    display: grid;
+    grid-template-columns: 50px 1fr 1fr 1fr 1fr 100px;
+  }
+
+  &__link:hover {
+    background-color: lightgray;
+  }
+
+  &__column-title {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    @include font(14px, 16px, 500);
+  }
+
+  &__column {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    @include font(14px, 16px, 300);
+    color: black;
+  }
+}
+
+.userDetails {
+  display: grid;
+  gap: 10px;
+  grid-auto-rows: minmax(50px, max-content);
+  overflow: hidden;
+
+  &__title {
+    margin-left: 20px;
+    @include font(20px, 24px, 300);
+  }
+}
+
+.userPersonal {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  &__avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > img {
+      background-color: wheat;
+      width: 170px;
+      height: 170px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+  }
+
+  &__info {
+    margin: auto 0;
+    display: grid;
+    grid-auto-rows: 32px;
+  }
+
+  &__row {
+    display: flex;
+    width: 100%;
+  }
+
+  &__text {
+    min-width: 80px;
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include font(14px, 16px, 300);
+  }
+
+  &__btn {
+    min-width: 80px;
+    height: 20px;
+    margin: auto 0;
+    margin-left: 20px;
+    border: none;
+    padding: 0;
+    background-color: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include font(14px, 16px, 300);
+    text-align: left;
+    cursor: pointer;
+    > img {
+      display: block;
+      margin-left: 10px;
+      transform: translateY(-4px);
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+.projectList {
+  width: 100%;
+  margin-top: 32px;
+  box-sizing: border-box;
+  overflow: hidden;
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  display: grid;
+  grid-auto-rows: minmax(32px, max-content);
+
+  &__row-title {
+    background-color: lightgray;
+    display: grid;
+    grid-template-columns: 50px 1fr 1fr 150px;
+  }
+
+  &__column-title {
+    width: 100%;
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+    @include font(14px, 16px, 500);
+  }
+
+  &__form {
+    height: 80%;
+    width: 90%;
+    border: none;
+    background-color: inherit;
+    padding-left: 20px;
+  }
+
+  &__form::placeholder {
+    @include font(14px, 16px, 300);
+  }
+
+  &__form:focus {
+    outline: 1px solid lightgray;
+    border-radius: 5px;
+  }
+
+  &__row {
+    text-decoration: none;
+    background-color: inherit;
+    display: grid;
+    grid-template-columns: 50px 1fr 1fr 150px;
+    border-bottom: 1px solid lightgray;
+    margin-bottom: -1px;
+  }
+
+  &__content:hover {
+    background-color: lightgray;
+  }
+
+  &__btn {
+    border: none;
+    background-color: inherit;
+    @include font(14px, 16px, 300);
+    text-align: left;
+    padding-left: 20px;
+    cursor: pointer;
+    > img {
+      display: block;
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__link {
+    width: 100%;
+    text-decoration: none;
+    color: black;
+    @include font(14px, 16px, 300);
+    text-align: left;
+    padding-left: 20px;
+  }
+
+  &__column {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    @include font(14px, 16px, 300);
+  }
+}
+
+.projectDetails {
+  display: grid;
+  gap: 10px;
+  grid-auto-rows: minmax(50px, max-content);
+
+  &__text {
+    height: 26px;
+    @include font(16px, 19px, 300);
+  }
+
+  &__back {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 40px;
+  }
+}
+
+.plcList {
+  width: 100%;
+  margin-top: 32px;
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  overflow: hidden;
+  box-sizing: border-box;
+  display: grid;
+  grid-auto-rows: minmax(32px, max-content);
+
+  &__column-title {
+    width: 100%;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    @include font(14px, 16px, 500);
+  }
+
+  &__row-title {
+    background-color: lightgray;
+    display: grid;
+    grid-template-columns: 50px 1fr 1fr 1fr 150px;
+  }
+
+  &__form {
+    height: 80%;
+    width: 90%;
+    border: none;
+    background-color: inherit;
+  }
+
+  ::placeholder {
+    @include font(14px, 16px, 300);
+  }
+
+  &__form:focus {
+    outline: 1px solid lightgray;
+    border-radius: 5px;
+  }
+
+  &__content:hover {
+    background-color: lightgray;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 50px 1fr 1fr 1fr 150px;
+    border-bottom: 1px solid lightgray;
+    margin-bottom: -1px;
+  }
+
+  &__column {
+    width: 100%;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    @include font(14px, 16px, 300);
+  }
+
+  &__btn {
+    border: none;
+    background-color: inherit;
+    text-align: left;
+    @include font(14px, 16px, 300);
+    cursor: pointer;
+
+    > img {
+      display: block;
+      width: 16px;
+      height: 16px;
+    }
+  }
+}

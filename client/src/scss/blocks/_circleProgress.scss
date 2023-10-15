@@ -1,0 +1,16 @@
+.circle {
+  &__background {
+    fill: none;
+    stroke: $scale;
+  }
+  &__progress {
+    fill: none;
+    stroke: $level;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  &__text {
+    font-size: 1.5rem;
+  }
+}
