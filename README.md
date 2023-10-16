@@ -16,6 +16,8 @@
 
 ### `docker-compose up`
 
+4 Running the Migrations
+
 ### `docker exec -it api npx sequelize db:migrate`
 
 ### `docker exec -it api npx sequelize db:seed:all`
