@@ -2,14 +2,15 @@ FROM node
 
 WORKDIR /app/api
 
-COPY package*.json ./
+COPY package.json .
+COPY package-lock.json .
 
 RUN npm install
 
-COPY . .
+COPY . ./
 
 COPY ./dist ./dist
 
-# CMD ["npm", "run", "start:dev"]
+CMD ["npm", "run", "start:dev"]
 
-ENTRYPOINT [ "./entrypoint.sh" ]
+# ENTRYPOINT [ "./entrypoint.sh" ]

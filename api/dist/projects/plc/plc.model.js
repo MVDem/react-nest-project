@@ -30,7 +30,7 @@ __decorate([
         example: 'Контроллер в РУ-0.4кВ',
         description: 'Название конроллера',
     }),
-    (0, sequelize_typescript_1.Column)({ type: sequelize_typescript_1.DataType.STRING, unique: true, allowNull: false }),
+    (0, sequelize_typescript_1.Column)({ type: sequelize_typescript_1.DataType.STRING, allowNull: false }),
     __metadata("design:type", String)
 ], Plc.prototype, "name", void 0);
 __decorate([

@@ -16,6 +16,10 @@
 
 ### `docker-compose up`
 
+### `docker exec -it api npx sequelize db:migrate`
+
+### `docker exec -it api npx sequelize db:seed:all`
+
 ## Client
 
 http://localhost:3000

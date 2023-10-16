@@ -30,7 +30,7 @@ export class Plc extends Model<Plc, PlcCreationAttrs> {
     example: 'Контроллер в РУ-0.4кВ',
     description: 'Название конроллера',
   })
-  @Column({ type: DataType.STRING, unique: true, allowNull: false })
+  @Column({ type: DataType.STRING, allowNull: false })
   name: string;
 
   @ApiProperty({
