@@ -1,17 +1,17 @@
 version: '3.9'
 
 services:
-  #client:
-  #  container_name: client
-  #  build:
-  #    context: client
-  #    dockerfile: Dockerfile
-  #  command: npm run start
-  #  ports:
-  #    - 3000:3000
-  #  networks:
-  #    - shared-network
-  # restart: unless-stopped
+  client:
+    container_name: client
+    build:
+      context: client
+      dockerfile: Dockerfile
+    command: npm run start
+    ports:
+      - 3000:3000
+    networks:
+      - shared-network
+    restart: unless-stopped
 
   api:
     container_name: api
@@ -48,18 +48,18 @@ services:
     networks:
       - shared-network
 
-  #pgadmin:
-  #  container_name: pgadmin4
-  #  image: dpage/pgadmin4
-  #  environment:
-  #    PGADMIN_DEFAULT_EMAIL: 'admin@mail.ru'
-  #    PGADMIN_DEFAULT_PASSWORD: 'root'
-  #  ports:
-  #    - '5050:80'
-  #  depends_on:
-  #    - postgres
-  #  networks:
-  #    - shared-network
+  pgadmin:
+    container_name: pgadmin4
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: 'admin@mail.ru'
+      PGADMIN_DEFAULT_PASSWORD: 'root'
+    ports:
+      - '5050:80'
+    depends_on:
+      - postgres
+    networks:
+      - shared-network
 
 volumes:
   pgdata:
