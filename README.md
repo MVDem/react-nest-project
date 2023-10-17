@@ -20,8 +20,6 @@
 
 ### `docker exec -it api npx sequelize db:migrate`
 
-### `docker exec -it api npx sequelize db:seed:all`
-
 ## Client
 
 http://localhost:3000
@@ -50,3 +48,5 @@ password - 12345
 
 email - admin@mail.ru
 password - root
+
+### `docker exec -it api npx sequelize db:seed:all`
