@@ -1,0 +1,20 @@
+.dashBoardAdmin {
+  max-height: 90vh;
+  width: 100%;
+  overflow: auto;
+  box-sizing: border-box;
+  padding: 10px;
+  padding-left: 20px;
+}
+
+.userDetails {
+  display: grid;
+  gap: 10px;
+  grid-auto-rows: minmax(50px, max-content);
+  overflow: hidden;
+
+  &__title {
+    margin-left: 20px;
+    @include font(20px, 24px, 300);
+  }
+}

@@ -1,0 +1,56 @@
+.dashBoardAdmin {
+  max-height: 90vh;
+  width: 100%;
+  overflow: auto;
+  box-sizing: border-box;
+  padding: 10px;
+  padding-left: 20px;
+}
+
+.usersList {
+  margin-top: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  display: grid;
+  grid-auto-rows: minmax(32px, max-content);
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  overflow: hidden;
+
+  &__rowTitle {
+    display: grid;
+    grid-template-columns: 50px 1fr 1fr 1fr 1fr 100px;
+    background-color: lightgray;
+  }
+
+  &__columnTitle {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    @include font(14px, 16px, 500);
+  }
+
+  &__row {
+    margin-bottom: -1px;
+    text-decoration: none;
+    background-color: inherit;
+    border-bottom: 1px solid lightgray;
+    display: grid;
+    grid-template-columns: 50px 1fr 1fr 1fr 1fr 100px;
+    &:hover {
+      background-color: lightgray;
+    }
+  }
+
+  &__column {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    @include font(14px, 16px, 300);
+    color: black;
+  }
+}

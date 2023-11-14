@@ -1,23 +1,28 @@
-import { Routes, Route } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import SignUpPage from './pages/SignUpPage';
-import SignInPage from './pages/SignInPage';
-import Layout from './components/layouts/Layout';
-import DashBoard from './pages/DashBoard';
-import { Private, PrivateAdmin } from './components/hocs/Private';
-import UsersList from './pages/AdminUsersListPage';
-import UserDetails from './pages/AdminUserDetailsPage';
-import SystemsPage from './pages/SystemsPage';
-import ProjectDetails from './pages/AdminProjectDetailsPage';
-import UserProfile from './pages/UserProfile';
+import { Route, Routes } from 'react-router-dom';
+import LayOutHome from './beforeAuth/pages/LayOutHome';
+import HomePage from './beforeAuth/pages/HomePage';
+import AboutPage from './beforeAuth/pages/AboutPage';
+import { Private, PrivateAdmin } from './assets/hocs/Private';
+import SignInPage from './beforeAuth/pages/SignInPage';
+import SignUpPage from './beforeAuth/pages/SignUpPage';
+import Layout from './afterAuthUser/pages/Layout';
+import UsersList from './afterAuthAdmin/pages/AdminUsersListPage';
+import UserDetails from './afterAuthAdmin/pages/AdminUserDetailsPage';
+import ProjectDetails from './afterAuthAdmin/pages/AdminProjectDetailsPage';
+import DashBoard from './afterAuthUser/pages/DashBoard';
+import UserProfile from './afterAuthUser/pages/UserProfile';
+import SystemsPage from './afterAuthUser/pages/SystemsPage';
 
-const App: React.FC = () => {
+function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/signIn" element={<SignInPage />} />
-        <Route path="/signUp" element={<SignUpPage />} />
+        <Route path="/" element={<LayOutHome />}>
+          <Route index element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/signIn" element={<SignInPage />} />
+          <Route path="/signUp" element={<SignUpPage />} />
+        </Route>
         <Route path="/dashboard" element={<Layout />}>
           <Route
             path="/dashboard/admin/users"
@@ -71,6 +76,6 @@ const App: React.FC = () => {
       </Routes>
     </>
   );
-};
+}
 
 export default App;

@@ -1,0 +1,40 @@
+.header {
+  height: 7vh;
+  background-color: $background-header;
+  padding: 0 20px;
+}
+
+.menu {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__main,
+  &__sub {
+    & > a {
+      text-decoration: none;
+      color: $menu-text;
+      margin-left: 20px;
+      @include font(20px, 24px, 600);
+    }
+  }
+}
+
+.main {
+  background-color: $background-body;
+  height: 88vh;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.footer {
+  height: 5vh;
+  background-color: $background-footer;
+}
+
+.container {
+  max-width: 1600px;
+  height: 100%;
+  margin: 0 auto;
+}

@@ -1,0 +1,99 @@
+.dashBoardAdmin {
+  max-height: 90vh;
+  width: 100%;
+  overflow: auto;
+  box-sizing: border-box;
+  padding: 10px;
+  padding-left: 20px;
+}
+
+.projectDetails {
+  display: grid;
+  gap: 10px;
+  grid-auto-rows: minmax(50px, max-content);
+
+  &__text {
+    height: 26px;
+    @include font(16px, 19px, 300);
+  }
+
+  &__back {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 40px;
+  }
+}
+
+.plcList {
+  width: 100%;
+  margin-top: 32px;
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  overflow: hidden;
+  box-sizing: border-box;
+  display: grid;
+  grid-auto-rows: minmax(32px, max-content);
+
+  &__columnTitle {
+    width: 100%;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    @include font(14px, 16px, 500);
+  }
+
+  &__rowTitle {
+    background-color: lightgray;
+    display: grid;
+    grid-template-columns: 50px 1fr 1fr 1fr 150px;
+  }
+
+  &__form {
+    height: 80%;
+    width: 90%;
+    border: none;
+    background-color: inherit;
+  }
+
+  ::placeholder {
+    @include font(14px, 16px, 300);
+  }
+
+  &__form:focus {
+    outline: 1px solid lightgray;
+    border-radius: 5px;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 50px 1fr 1fr 1fr 150px;
+    border-bottom: 1px solid lightgray;
+    margin-bottom: -1px;
+
+    &:hover {
+      background-color: lightgray;
+    }
+  }
+
+  &__column {
+    width: 100%;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    @include font(14px, 16px, 300);
+  }
+
+  &__btn {
+    border: none;
+    background-color: inherit;
+    text-align: left;
+    @include font(14px, 16px, 300);
+    cursor: pointer;
+
+    > img {
+      display: block;
+      width: 16px;
+      height: 16px;
+    }
+  }
+}

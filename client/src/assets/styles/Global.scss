@@ -1,0 +1,53 @@
+$background-body: #57bac1;
+$background-header: #1c6b72;
+$background-footer: #1c6b72;
+$menu-background: #1c6b72;
+$menu-hover: #2d929f;
+$menu-text: white;
+$menu-extra-background: white;
+$menu-extra-hover: #2d929f;
+$menu-extra-text: black;
+
+$background-card: white;
+
+// progressBar
+$scale: #cfcfcf;
+$level: #8ade2e;
+
+// Auth
+$auth-background: #2b2b2c;
+
+$max-tablet-width: 1279px;
+$max-mobile-width: 780px;
+
+@mixin font($size: 14px, $heght: 17px, $weight: 300, $style: normal) {
+  font-family: 'Roboto', sans-serif;
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $heght;
+  font-style: $style;
+}
+
+@media (max-width: $max-tablet-width) {
+  .container {
+    max-width: 96%;
+  }
+}
+
+@media (max-width: $max-mobile-width) {
+  .container {
+    max-width: 96%;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: $max-tablet-width) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: $max-mobile-width) {
+    @content;
+  }
+}

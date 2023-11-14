@@ -1,0 +1,61 @@
+.dashboard {
+  width: 100%;
+  box-sizing: border-box;
+  display: grid;
+  overflow: auto;
+  padding: 0 1%;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, calc(49%));
+  grid-template-areas:
+    'plans  notification  alarms'
+    'plans  contacts  contacts';
+  gap: 2%;
+
+  &__plans {
+    grid-area: plans;
+    background-color: white;
+    border-radius: 8px;
+    text-decoration: none;
+  }
+
+  &__alarms {
+    grid-area: alarms;
+    background-color: white;
+    border-radius: 8px;
+  }
+
+  &__notification {
+    grid-area: notification;
+    background-color: white;
+    border-radius: 8px;
+  }
+
+  &__contacts {
+    grid-area: contacts;
+    background-color: white;
+    border-radius: 8px;
+  }
+}
+
+@include tablet {
+  .dashboard {
+    grid-template-areas:
+      'plans  notification'
+      'alarms contacts';
+
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(auto-fit, 1fr);
+  }
+}
+
+@include mobile {
+  .dashboard {
+    grid-template-areas:
+      'plans'
+      'notification'
+      'alarms'
+      'contacts';
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+  }
+}

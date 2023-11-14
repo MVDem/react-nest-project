@@ -1,0 +1,47 @@
+.auth {
+  height: 88vh;
+  //width: 100vw;
+  display: flex;
+  background: $background-body;
+
+  &__wrapper {
+    margin: auto;
+    min-width: 30%;
+    height: auto;
+    background-color: $menu-background;
+    border-radius: 8px;
+  }
+
+  &__main {
+    inset: 2px;
+    border-radius: 8px;
+    background: inherit;
+    z-index: 10;
+    padding: 50px 40px;
+  }
+
+  &__title {
+    color: $menu-text;
+    font-family: Roboto;
+    @include font(20px, 24px, 600);
+    text-align: center;
+    letter-spacing: 0.1em;
+  }
+
+  &__links {
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+  }
+
+  &__link {
+    margin: 10px 0;
+    font-family: Roboto;
+    font-size: 0.75em;
+    color: $menu-text;
+    text-decoration: none;
+  }
+  &__link:hover {
+    color: $menu-text;
+  }
+}
