@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { IStateProjects } from '../../assets/types/type';
+import { IStateProjects } from '../../../assets/types/type';
 
 export default function SystemPage() {
   const { projects } = useSelector((state: IStateProjects) => state.projects);

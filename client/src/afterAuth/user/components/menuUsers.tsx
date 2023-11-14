@@ -1,9 +1,13 @@
 import { NavLink } from 'react-router-dom';
-import { IStateProjects, IStateUser, Project } from '../../assets/types/type';
-import { getAllProjectsUser } from '../../assets/http/requests';
+import {
+  IStateProjects,
+  IStateUser,
+  Project,
+} from '../../../assets/types/type';
+import { getAllProjectsUser } from '../../../assets/http/requests';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { setProjects } from '../../assets/store/projectsSlice';
+import { setProjects } from '../../../assets/store/projectsSlice';
 import styles from './scss/menuUser.module.scss';
 
 export default function MenuUsers() {

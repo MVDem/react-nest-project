@@ -1,12 +1,12 @@
 import { useSelector } from 'react-redux';
-import { IStateUser, User } from '../../assets/types/type';
+import { IStateUser, User } from '../../../assets/types/type';
 import { useState } from 'react';
 import {
   addUserRole,
   banAddUser,
   banRemoveUser,
   deleteUserRole,
-} from '../../assets/http/requests';
+} from '../../../assets/http/requests';
 import {
   Box,
   Button,

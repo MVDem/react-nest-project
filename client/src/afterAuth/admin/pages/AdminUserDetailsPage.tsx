@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
-import { IStateUser, User } from '../../assets/types/type';
+import { IStateUser, User } from '../../../assets/types/type';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getUserDetales } from '../../assets/http/requests';
+import { getUserDetales } from '../../../assets/http/requests';
 import UserProjects from '../components/userProjects';
 import UserPersonal from '../components/userPersonal';
 import styles from './scss/userDetales.module.scss';

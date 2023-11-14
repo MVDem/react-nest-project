@@ -5,13 +5,13 @@ import AboutPage from './beforeAuth/pages/AboutPage';
 import { Private, PrivateAdmin } from './assets/hocs/Private';
 import SignInPage from './beforeAuth/pages/SignInPage';
 import SignUpPage from './beforeAuth/pages/SignUpPage';
-import Layout from './afterAuthUser/pages/Layout';
-import UsersList from './afterAuthAdmin/pages/AdminUsersListPage';
-import UserDetails from './afterAuthAdmin/pages/AdminUserDetailsPage';
-import ProjectDetails from './afterAuthAdmin/pages/AdminProjectDetailsPage';
-import DashBoard from './afterAuthUser/pages/DashBoard';
-import UserProfile from './afterAuthUser/pages/UserProfile';
-import SystemsPage from './afterAuthUser/pages/SystemsPage';
+import Layout from './afterAuth/user/pages/Layout';
+import UsersList from './afterAuth/admin/pages/AdminUsersListPage';
+import UserDetails from './afterAuth/admin/pages/AdminUserDetailsPage';
+import ProjectDetails from './afterAuth/admin/pages/AdminProjectDetailsPage';
+import DashBoard from './afterAuth/user/pages/DashBoard';
+import UserProfile from './afterAuth/user/pages/UserProfile';
+import SystemsPage from './afterAuth/user/pages/SystemsPage';
 
 function App() {
   return (

@@ -1,11 +1,11 @@
 import { Outlet, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { IStateUser, User } from '../../assets/types/type';
+import { IStateUser, User } from '../../../assets/types/type';
 import { useEffect, useState } from 'react';
-import MenuAdmin from '../../afterAuthAdmin/components/menuAdmin';
+import MenuAdmin from '../../../afterAuth/admin/components/menuAdmin';
 import MenuUsers from '../components/menuUsers';
-import { getUserDetales } from '../../assets/http/requests';
-import { removeUser } from '../../assets/store/userSlice';
+import { getUserDetales } from '../../../assets/http/requests';
+import { removeUser } from '../../../assets/store/userSlice';
 import ClockDate from '../components/clock-date';
 import { NavLink } from 'react-router-dom';
 import styles from './scss/layOut.module.scss';

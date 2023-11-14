@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
-import { IStateUser, Role, User } from '../../assets/types/type';
+import { IStateUser, Role, User } from '../../../assets/types/type';
 import { useEffect, useState } from 'react';
-import { getUserDetales } from '../../assets/http/requests';
+import { getUserDetales } from '../../../assets/http/requests';
 import styles from './scss/userPrifile.module.scss';
 
 export default function UserProfile() {

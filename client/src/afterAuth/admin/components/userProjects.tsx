@@ -1,6 +1,9 @@
 import { useSelector } from 'react-redux';
-import { IStateUser, Project } from '../../assets/types/type';
-import { addProjectUser, removeProjectUser } from '../../assets/http/requests';
+import { IStateUser, Project } from '../../../assets/types/type';
+import {
+  addProjectUser,
+  removeProjectUser,
+} from '../../../assets/http/requests';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './scss/userProjects.module.scss';

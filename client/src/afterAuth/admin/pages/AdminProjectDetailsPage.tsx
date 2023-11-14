@@ -1,12 +1,12 @@
 import { useSelector } from 'react-redux';
-import { IStateUser, Plc, Project } from '../../assets/types/type';
+import { IStateUser, Plc, Project } from '../../../assets/types/type';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import {
   addPlcProject,
   getProjectUser,
   removePlcProject,
-} from '../../assets/http/requests';
+} from '../../../assets/http/requests';
 import { NavLink } from 'react-router-dom';
 import styles from './scss/projectDetailsPage.module.scss';
 

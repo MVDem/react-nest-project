@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { IStateUser } from '../../assets/types/type';
+import { IStateUser } from '../../../assets/types/type';
 import { CardPlans } from '../components/mainCard/CardPlans';
 import { CardAlarms } from '../components/mainCard/CardAlarms';
 import { CardNotification } from '../components/mainCard/CardNotification';

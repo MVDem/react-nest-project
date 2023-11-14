@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useSelector } from 'react-redux';
-import { IStateUser, User } from '../../assets/types/type';
+import { IStateUser, User } from '../../../assets/types/type';
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './scss/usersListPage.module.scss';
