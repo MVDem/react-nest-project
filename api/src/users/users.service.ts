@@ -8,12 +8,16 @@ import { BanUserDto } from './dtos/ban-user.dto';
 import { UnBlockUserDto } from './dtos/unblock-user.dto';
 import { GetUser } from './dtos/get-user';
 import { RemoveUserDto } from './dtos/remove-user.dto';
+import { EditUser } from './dtos/EditUser.dto';
+import { JwtService } from '@nestjs/jwt';
+import { AuthService } from './auth/auth.service';
 
 @Injectable()
 export class UsersService {
   constructor(
     @InjectModel(User) private userRepository: typeof User,
-    private roleService: RolesService
+    private roleService: RolesService,
+    private jwtService: JwtService
   ) {}
 
   async createUser(dto: CreateUserDto) {
@@ -21,6 +25,37 @@ export class UsersService {
     const role = await this.roleService.getRoleByValue('ADMIN');
     await user.$set('roles', [role.id]);
     user.roles = [role];
+    return user;
+  }
+
+  async editUser(dto: EditUser) {
+    const token = dto.token;
+    if (!token) {
+      throw new HttpException(
+        {
+          status: HttpStatus.NOT_FOUND,
+          error: 'Пользователь не найден',
+        },
+        HttpStatus.NOT_FOUND
+      );
+    }
+
+    const userId = this.jwtService.verify(token).id;
+    const user = await this.userRepository.findByPk(userId);
+
+    for (let key in dto) {
+      if (key !== 'token') {
+        user[key] = dto[key];
+      }
+    }
+
+    const { name, lastName, phone } = user;
+
+    this.userRepository.update(
+      { name: name, lastName: lastName, phone: phone },
+      { where: { id: userId } }
+    );
+
     return user;
   }
 

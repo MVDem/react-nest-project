@@ -7,7 +7,7 @@ export default function HomePage() {
       <Parallax
         pages={4}
         className={styles.wrapper}
-        style={{ overflow: 'scroll', height: '88vh', margin: '0 auto' }}
+        style={{ overflow: 'scroll', height: '90vh', margin: '0 auto' }}
       >
         <ParallaxLayer
           speed={0.5}

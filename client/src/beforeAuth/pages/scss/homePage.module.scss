@@ -1,9 +1,9 @@
 .wrapper {
   max-width: 1600px;
-  height: 88vh;
-  margin: 0 auto;
+  //height: 88vh;
+  //margin: 0 auto;
+  //overflow: scroll;
   display: flex;
-  overflow: scroll;
   &::-webkit-scrollbar {
     width: 0;
   }
@@ -11,7 +11,7 @@
 
 .titleImage {
   max-width: 1600px;
-  height: 88vh;
+  height: 90vh;
   margin: 0 auto;
   background-image: url('./img/title1.png');
   background-position: center;

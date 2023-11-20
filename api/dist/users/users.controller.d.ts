@@ -9,11 +9,13 @@ import { RolesService } from './role/role.service';
 import { Role } from './role/roles.model';
 import { GetUser } from './dtos/get-user';
 import { RemoveUserDto } from './dtos/remove-user.dto';
+import { EditUser } from './dtos/EditUser.dto';
 export declare class UsersController {
     private usersService;
     private roleService;
     constructor(usersService: UsersService, roleService: RolesService);
     create(userDto: CreateUserDto): Promise<User>;
+    editUser(dto: EditUser): Promise<User>;
     remove(userDto: RemoveUserDto): Promise<RemoveUserDto>;
     getAll(): Promise<User[]>;
     getOne(dto: GetUser): Promise<User>;

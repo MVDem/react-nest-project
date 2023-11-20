@@ -1,4 +1,12 @@
-import { Body, Controller, Delete, Get, Post, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Post,
+  Put,
+  UseGuards,
+} from '@nestjs/common';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { UsersService } from './users.service';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
@@ -13,6 +21,7 @@ import { RolesService } from './role/role.service';
 import { Role } from './role/roles.model';
 import { GetUser } from './dtos/get-user';
 import { RemoveUserDto } from './dtos/remove-user.dto';
+import { EditUser } from './dtos/EditUser.dto';
 
 @ApiTags('Админ')
 @Controller('users')
@@ -27,6 +36,15 @@ export class UsersController {
   @Post()
   create(@Body() userDto: CreateUserDto) {
     return this.usersService.createUser(userDto);
+  }
+
+  @ApiOperation({ summary: 'Изменить данные о пользователе' })
+  @ApiResponse({ status: 200, type: User })
+  @Roles('USER')
+  @UseGuards(RolesGuard)
+  @Put('/detales/editUser')
+  editUser(@Body() dto: EditUser) {
+    return this.usersService.editUser(dto);
   }
 
   @ApiOperation({ summary: 'Удаление пользователя' })

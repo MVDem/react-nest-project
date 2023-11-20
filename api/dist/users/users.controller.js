@@ -28,6 +28,7 @@ const role_service_1 = require("./role/role.service");
 const roles_model_1 = require("./role/roles.model");
 const get_user_1 = require("./dtos/get-user");
 const remove_user_dto_1 = require("./dtos/remove-user.dto");
+const EditUser_dto_1 = require("./dtos/EditUser.dto");
 let UsersController = class UsersController {
     constructor(usersService, roleService) {
         this.usersService = usersService;
@@ -35,6 +36,9 @@ let UsersController = class UsersController {
     }
     create(userDto) {
         return this.usersService.createUser(userDto);
+    }
+    editUser(dto) {
+        return this.usersService.editUser(dto);
     }
     remove(userDto) {
         return this.usersService.removeUser(userDto);
@@ -70,6 +74,17 @@ __decorate([
     __metadata("design:paramtypes", [create_user_dto_1.CreateUserDto]),
     __metadata("design:returntype", void 0)
 ], UsersController.prototype, "create", null);
+__decorate([
+    (0, swagger_1.ApiOperation)({ summary: 'Изменить данные о пользователе' }),
+    (0, swagger_1.ApiResponse)({ status: 200, type: users_model_1.User }),
+    (0, roles_auth_decorator_1.Roles)('USER'),
+    (0, common_1.UseGuards)(roles_guard_1.RolesGuard),
+    (0, common_1.Put)('/detales/editUser'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [EditUser_dto_1.EditUser]),
+    __metadata("design:returntype", void 0)
+], UsersController.prototype, "editUser", null);
 __decorate([
     (0, swagger_1.ApiOperation)({ summary: 'Удаление пользователя' }),
     (0, swagger_1.ApiResponse)({ status: 200, type: users_model_1.User }),

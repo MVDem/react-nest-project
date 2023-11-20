@@ -17,16 +17,37 @@ const common_1 = require("@nestjs/common");
 const users_model_1 = require("./users.model");
 const sequelize_1 = require("@nestjs/sequelize");
 const role_service_1 = require("./role/role.service");
+const jwt_1 = require("@nestjs/jwt");
 let UsersService = class UsersService {
-    constructor(userRepository, roleService) {
+    constructor(userRepository, roleService, jwtService) {
         this.userRepository = userRepository;
         this.roleService = roleService;
+        this.jwtService = jwtService;
     }
     async createUser(dto) {
         const user = await this.userRepository.create(dto);
         const role = await this.roleService.getRoleByValue('ADMIN');
         await user.$set('roles', [role.id]);
         user.roles = [role];
+        return user;
+    }
+    async editUser(dto) {
+        const token = dto.token;
+        if (!token) {
+            throw new common_1.HttpException({
+                status: common_1.HttpStatus.NOT_FOUND,
+                error: 'Пользователь не найден',
+            }, common_1.HttpStatus.NOT_FOUND);
+        }
+        const userId = this.jwtService.verify(token).id;
+        const user = await this.userRepository.findByPk(userId);
+        for (let key in dto) {
+            if (key !== 'token') {
+                user[key] = dto[key];
+            }
+        }
+        const { name, lastName, phone } = user;
+        this.userRepository.update({ name: name, lastName: lastName, phone: phone }, { where: { id: userId } });
         return user;
     }
     async removeUser(dto) {
@@ -98,7 +119,8 @@ let UsersService = class UsersService {
 UsersService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, sequelize_1.InjectModel)(users_model_1.User)),
-    __metadata("design:paramtypes", [Object, role_service_1.RolesService])
+    __metadata("design:paramtypes", [Object, role_service_1.RolesService,
+        jwt_1.JwtService])
 ], UsersService);
 exports.UsersService = UsersService;
 //# sourceMappingURL=users.service.js.map

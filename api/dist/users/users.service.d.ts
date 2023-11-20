@@ -6,11 +6,15 @@ import { BanUserDto } from './dtos/ban-user.dto';
 import { UnBlockUserDto } from './dtos/unblock-user.dto';
 import { GetUser } from './dtos/get-user';
 import { RemoveUserDto } from './dtos/remove-user.dto';
+import { EditUser } from './dtos/EditUser.dto';
+import { JwtService } from '@nestjs/jwt';
 export declare class UsersService {
     private userRepository;
     private roleService;
-    constructor(userRepository: typeof User, roleService: RolesService);
+    private jwtService;
+    constructor(userRepository: typeof User, roleService: RolesService, jwtService: JwtService);
     createUser(dto: CreateUserDto): Promise<User>;
+    editUser(dto: EditUser): Promise<User>;
     removeUser(dto: RemoveUserDto): Promise<RemoveUserDto>;
     getAllUsers(): Promise<User[]>;
     getUserByEmail(email: string): Promise<User>;
