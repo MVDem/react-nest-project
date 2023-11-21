@@ -17,6 +17,8 @@ const projects_module_1 = require("./projects/projects.module");
 const project_model_1 = require("./projects/project.model");
 const plc_model_1 = require("./projects/plc/plc.model");
 const config_1 = require("@nestjs/config");
+const serve_static_1 = require("@nestjs/serve-static");
+const path_1 = require("path");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -24,6 +26,9 @@ AppModule = __decorate([
         controllers: [],
         providers: [],
         imports: [
+            serve_static_1.ServeStaticModule.forRoot({
+                rootPath: (0, path_1.join)(__dirname, '..', 'public'),
+            }),
             config_1.ConfigModule.forRoot({
                 envFilePath: `.${process.env.NODE_ENV}.env`,
             }),

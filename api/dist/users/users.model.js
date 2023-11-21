@@ -61,6 +61,14 @@ __decorate([
     __metadata("design:type", String)
 ], User.prototype, "\u0441ompanyName", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 'URL',
+        description: 'Ссылка на аватар',
+    }),
+    (0, sequelize_typescript_1.Column)({ type: sequelize_typescript_1.DataType.STRING, allowNull: false }),
+    __metadata("design:type", String)
+], User.prototype, "avatar", void 0);
+__decorate([
     (0, swagger_1.ApiProperty)({ example: 'true', description: 'Заблокирован или нет' }),
     (0, sequelize_typescript_1.Column)({ type: sequelize_typescript_1.DataType.BOOLEAN, defaultValue: false }),
     __metadata("design:type", Boolean)

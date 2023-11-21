@@ -14,6 +14,8 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersController = void 0;
 const common_1 = require("@nestjs/common");
+const platform_express_1 = require("@nestjs/platform-express");
+const multer_1 = require("multer");
 const create_user_dto_1 = require("./dtos/create-user.dto");
 const users_service_1 = require("./users.service");
 const swagger_1 = require("@nestjs/swagger");
@@ -29,10 +31,17 @@ const roles_model_1 = require("./role/roles.model");
 const get_user_1 = require("./dtos/get-user");
 const remove_user_dto_1 = require("./dtos/remove-user.dto");
 const EditUser_dto_1 = require("./dtos/EditUser.dto");
+const HelperFileLoader_1 = require("../lib/HelperFileLoader");
+const AddAvatar_dto_1 = require("./dtos/AddAvatar.dto");
+const helperFileLoader = new HelperFileLoader_1.HelperFileLoader();
+helperFileLoader.path = '/avatars';
 let UsersController = class UsersController {
     constructor(usersService, roleService) {
         this.usersService = usersService;
         this.roleService = roleService;
+    }
+    addAvatar(dto, avatar) {
+        return this.usersService.addAvatar(avatar, dto);
     }
     create(userDto) {
         return this.usersService.createUser(userDto);
@@ -65,6 +74,24 @@ let UsersController = class UsersController {
         return this.usersService.unBlock(dto);
     }
 };
+__decorate([
+    (0, swagger_1.ApiOperation)({ summary: 'Изменить аватар' }),
+    (0, swagger_1.ApiResponse)({ status: 200, type: users_model_1.User }),
+    (0, roles_auth_decorator_1.Roles)('USER'),
+    (0, common_1.UseGuards)(roles_guard_1.RolesGuard),
+    (0, common_1.Post)('/detales/addAvatar'),
+    (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)('avatar', {
+        storage: (0, multer_1.diskStorage)({
+            destination: helperFileLoader.destinationPath,
+            filename: helperFileLoader.customFileName,
+        }),
+    })),
+    __param(0, (0, common_1.Body)()),
+    __param(1, (0, common_1.UploadedFile)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [AddAvatar_dto_1.AddAvatar, Object]),
+    __metadata("design:returntype", void 0)
+], UsersController.prototype, "addAvatar", null);
 __decorate([
     (0, swagger_1.ApiOperation)({ summary: 'Создание пользователя' }),
     (0, swagger_1.ApiResponse)({ status: 200, type: users_model_1.User }),

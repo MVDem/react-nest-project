@@ -24,11 +24,26 @@ let UsersService = class UsersService {
         this.roleService = roleService;
         this.jwtService = jwtService;
     }
+    async addAvatar(avatar, dto) {
+        const token = dto.token;
+        const userId = this.jwtService.verify(token).id;
+        if (!userId) {
+            throw new common_1.HttpException({
+                status: common_1.HttpStatus.NOT_FOUND,
+                error: 'Пользователь не найден',
+            }, common_1.HttpStatus.NOT_FOUND);
+        }
+        const path = avatar.path.split('/').slice(1).join('/');
+        await this.userRepository.update({ avatar: path }, { where: { id: userId } });
+        const updatedUser = await this.userRepository.findByPk(userId);
+        return updatedUser;
+    }
     async createUser(dto) {
         const user = await this.userRepository.create(dto);
         const role = await this.roleService.getRoleByValue('ADMIN');
         await user.$set('roles', [role.id]);
         user.roles = [role];
+        user.avatar = 'avatars/avatarDefault.jpg';
         return user;
     }
     async editUser(dto) {

@@ -6,7 +6,11 @@ import {
   Post,
   Put,
   UseGuards,
+  UploadedFile,
+  UseInterceptors,
 } from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { diskStorage } from 'multer';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { UsersService } from './users.service';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
@@ -22,6 +26,11 @@ import { Role } from './role/roles.model';
 import { GetUser } from './dtos/get-user';
 import { RemoveUserDto } from './dtos/remove-user.dto';
 import { EditUser } from './dtos/EditUser.dto';
+import { HelperFileLoader } from 'src/lib/HelperFileLoader';
+import { AddAvatar } from './dtos/AddAvatar.dto';
+
+const helperFileLoader = new HelperFileLoader();
+helperFileLoader.path = '/avatars';
 
 @ApiTags('Админ')
 @Controller('users')
@@ -31,6 +40,27 @@ export class UsersController {
     private roleService: RolesService
   ) {}
 
+  @ApiOperation({ summary: 'Изменить аватар' })
+  @ApiResponse({ status: 200, type: User })
+  @Roles('USER')
+  @UseGuards(RolesGuard)
+  @Post('/detales/addAvatar')
+  @UseInterceptors(
+    FileInterceptor('avatar', {
+      storage: diskStorage({
+        destination: helperFileLoader.destinationPath,
+        filename: helperFileLoader.customFileName,
+      }),
+    })
+  )
+  addAvatar(
+    @Body() dto: AddAvatar,
+    @UploadedFile() avatar: Express.Multer.File
+  ) {
+    return this.usersService.addAvatar(avatar, dto);
+  }
+
+  //==============================================
   @ApiOperation({ summary: 'Создание пользователя' })
   @ApiResponse({ status: 200, type: User })
   @Post()

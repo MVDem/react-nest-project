@@ -1,20 +1,19 @@
 import { useSelector } from 'react-redux';
 import { IStateUser, Role, User } from '../../../assets/types/type';
 import { useEffect, useState } from 'react';
-import { editUser, getUserDetales } from '../../../assets/http/requests';
+import { getUserDetales } from '../../../assets/http/requests';
 import styles from './scss/userPrifile.module.scss';
-//import { setUser } from '../../../assets/store/userSlice';
+import InputImage from '../components/InputImage';
+import InputText from '../components/InputText';
 
 export default function UserProfile() {
   const [userDetailed, setUserDetailed] = useState<User>();
-  const [atrValue, setAtrValue] = useState('');
-  const [atrToChange, setAtrToChange] = useState('');
-  const [isWindowOpen, setIsWindowOpen] = useState(false);
 
-  const opacityValue: string = '0.15';
+  const [isInputText, setIsInputText] = useState(false);
+  const [atrInputText, setatrInputText] = useState('');
+  const [isInputImage, setIsInputImage] = useState(false);
 
   const user = useSelector((state: IStateUser) => state.user);
-
   const isUser = user.roles?.find((e) => e === 'USER');
 
   const getuserDetailed = () => {
@@ -26,28 +25,9 @@ export default function UserProfile() {
     getuserDetailed();
   }, [user]);
 
-  //===============================================
-
-  const handleChange = (nameWindow: string) => {
-    setIsWindowOpen(true);
-    setAtrToChange(nameWindow);
-  };
-
-  const hadleCloseWindow = () => {
-    setIsWindowOpen(false);
-    setAtrToChange('');
-  };
-
-  const handleSentChanges = () => {
-    const bodySent = {
-      token: user.token,
-      [atrToChange]: atrValue,
-    };
-    editUser(bodySent, user.token, getuserDetailed);
-
-    setIsWindowOpen(false);
-    setAtrToChange('');
-    setAtrValue('');
+  const handleChange = (atr: string) => {
+    setIsInputText(true);
+    setatrInputText(atr);
   };
 
   return (
@@ -55,16 +35,18 @@ export default function UserProfile() {
       {isUser && (
         <div className={styles.profile}>
           <section className={styles.profile__container}>
-            <div
-              className={styles.profile__avatar}
-              style={{ opacity: isWindowOpen ? opacityValue : '1' }}
-            >
-              <img src="/img/avatar.jpg" alt="avatar" />
+            <div className={styles.profile__avatar}>
+              <img
+                src={
+                  userDetailed
+                    ? `http://localhost:5000/${userDetailed?.avatar}`
+                    : '#'
+                }
+                alt="avatar"
+              />
+              <button onClick={() => setIsInputImage(true)}>new avatar</button>
             </div>
-            <div
-              className={styles.profile__info}
-              style={{ opacity: isWindowOpen ? opacityValue : '1' }}
-            >
+            <div className={styles.profile__info}>
               <h3 className={styles.userDetails__title}>Personal</h3>
               <div className={styles.profile__row}>
                 <p className={styles.profile__text}>Email :</p>
@@ -118,27 +100,28 @@ export default function UserProfile() {
               </div>
             </div>
             <div
-              className={styles.profile__edit}
-              style={{ display: isWindowOpen ? 'flex' : 'none' }}
+              className={styles.profile__formAvatar}
+              style={{
+                display: isInputText ? 'flex' : 'none',
+              }}
             >
-              <div>
-                <button onClick={() => hadleCloseWindow()}>
-                  <img src="/img/close.svg" alt="close" />
-                </button>
-              </div>
-              <input
-                placeholder="write the "
-                className={styles.profile__form}
-                required={true}
-                value={atrValue}
-                onChange={(e) => setAtrValue(e.target.value)}
+              <InputText
+                getuserDetailed={getuserDetailed}
+                setIsInputText={setIsInputText}
+                setatrInputText={setatrInputText}
+                atrInputText={atrInputText}
               />
-              <button
-                className={styles.profile__formBtn}
-                onClick={handleSentChanges}
-              >
-                Send change {atrToChange}
-              </button>
+            </div>
+            <div
+              className={styles.profile__formAvatar}
+              style={{
+                display: isInputImage ? 'flex' : 'none',
+              }}
+            >
+              <InputImage
+                getuserDetailed={getuserDetailed}
+                setIsInputImage={setIsInputImage}
+              />
             </div>
           </section>
         </div>

@@ -34,6 +34,7 @@ export interface User {
   lastName: string;
   phone: string;
   сompanyName: string;
+  avatar: string;
   banned: boolean;
   banReason: string;
   roles: Role[];

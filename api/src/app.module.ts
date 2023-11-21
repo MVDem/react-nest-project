@@ -8,11 +8,16 @@ import { ProjectsModule } from './projects/projects.module';
 import { Project } from './projects/project.model';
 import { Plc } from './projects/plc/plc.model';
 import { ConfigModule } from '@nestjs/config';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   controllers: [],
   providers: [],
   imports: [
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'public'),
+    }),
     ConfigModule.forRoot({
       envFilePath: `.${process.env.NODE_ENV}.env`,
     }),

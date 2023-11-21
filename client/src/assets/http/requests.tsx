@@ -17,6 +17,42 @@ export function getUserDetales(bodySent: {}, token: string, cb: any) {
     });
 }
 
+export function editUser(bodySent: {}, token: string, cb: any) {
+  const url = 'http://localhost:5000/users/detales/editUser';
+
+  axios
+    .put(url, bodySent, {
+      headers: {
+        'content-type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((response) => {
+      cb(response.data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+export function addAvatar(bodySent: {}, token: string, cb: any) {
+  const url = 'http://localhost:5000/users/detales/addAvatar';
+
+  axios
+    .post(url, bodySent, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((response) => {
+      cb(response.data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
 //=========ROLE====================
 
 export function deleteUserRole(bodySent: {}, token: string, cb: any) {
@@ -220,24 +256,6 @@ export function getPlc(bodySent: {}, token: string, cb: any) {
 
   axios
     .post(url, bodySent, {
-      headers: {
-        'content-type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
-    })
-    .then((response) => {
-      cb(response.data);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-}
-
-export function editUser(bodySent: {}, token: string, cb: any) {
-  const url = 'http://localhost:5000/users/detales/editUser';
-
-  axios
-    .put(url, bodySent, {
       headers: {
         'content-type': 'application/json',
         Authorization: `Bearer ${token}`,

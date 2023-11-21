@@ -1,0 +1,104 @@
+.form {
+  margin: auto auto;
+  max-width: 400px;
+  min-width: 25vw;
+  min-height: 100px;
+  border-radius: 8px;
+  -webkit-box-shadow: 4px 4px 45px 7px rgba(87, 186, 193, 0.42);
+  -moz-box-shadow: 4px 4px 45px 7px rgba(87, 186, 193, 0.42);
+  box-shadow: 4px 4px 45px 7px rgba(87, 186, 193, 0.42);
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+
+  &__close {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+
+    & > button {
+      border: none;
+      background-color: inherit;
+      cursor: pointer;
+    }
+  }
+
+  &__inputFile {
+    width: 70%;
+
+    & > input {
+      opacity: 0;
+      position: absolute;
+    }
+  }
+
+  &__inputFile:hover &__chooseBtn {
+    @include font(16px, 19px, 300);
+  }
+
+  &__chooseBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 32px;
+    border-radius: 8px;
+    border: none;
+    background-color: $menu-background;
+    @include font(14px, 16px, 300);
+    color: $menu-text;
+    gap: 10px;
+    &:hover {
+      @include font(16px, 19px, 300);
+    }
+  }
+
+  &__formBtn {
+    min-height: 32px;
+    width: 70%;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: none;
+    background-color: $menu-background;
+    @include font(14px, 16px, 300);
+    color: $menu-text;
+    &:hover {
+      @include font(16px, 19px, 300);
+    }
+  }
+
+  &__preview {
+    width: 70%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-size: cover;
+
+    & > img {
+      width: 100%;
+      height: auto;
+      margin: 20px 0;
+    }
+
+    & > p {
+      @include font(14px, 16px, 300);
+    }
+  }
+  &__fileName {
+    & > button {
+      border: none;
+      background-color: inherit;
+      cursor: pointer;
+
+      & > img {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+}

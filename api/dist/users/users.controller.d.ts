@@ -1,3 +1,4 @@
+/// <reference types="multer" />
 import { CreateUserDto } from './dtos/create-user.dto';
 import { UsersService } from './users.service';
 import { User } from './users.model';
@@ -10,10 +11,12 @@ import { Role } from './role/roles.model';
 import { GetUser } from './dtos/get-user';
 import { RemoveUserDto } from './dtos/remove-user.dto';
 import { EditUser } from './dtos/EditUser.dto';
+import { AddAvatar } from './dtos/AddAvatar.dto';
 export declare class UsersController {
     private usersService;
     private roleService;
     constructor(usersService: UsersService, roleService: RolesService);
+    addAvatar(dto: AddAvatar, avatar: Express.Multer.File): Promise<User>;
     create(userDto: CreateUserDto): Promise<User>;
     editUser(dto: EditUser): Promise<User>;
     remove(userDto: RemoveUserDto): Promise<RemoveUserDto>;
